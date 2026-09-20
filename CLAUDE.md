@@ -19,10 +19,10 @@ Run these from the plugin root (`wp-content/plugins/magic-timeline`).
 php -l widgets/class-timeline-widget.php
 
 # WordPress coding standards (the project standard is WordPress-Extra)
-phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules .
+phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules --exclude=WordPress.Files.FileName .
 
 # Auto-fix fixable coding-standard violations
-phpcbf --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules .
+phpcbf --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules --exclude=WordPress.Files.FileName .
 
 # Regenerate the translation template after adding/changing any __()/_e() string
 wp i18n make-pot . languages/magic-timeline.pot --domain=magic-timeline --slug=magic-timeline
@@ -47,7 +47,11 @@ Before it packages anything, the script also refuses to run unless the release i
 
 **`bin/check-versions.sh`** holds the version-consistency + changelog-entry-exists checks (shared by `bin/build-release.sh` and CI) — it's the single place that logic lives; don't re-inline it elsewhere.
 
-**CI/CD** (`.github/workflows/`): `ci.yml` runs on every push/PR — PHP syntax across a small version matrix, `phpcs --standard=WordPress-Extra`, a `PHPCompatibilityWP` check pinned to the 7.4 floor, `bin/check-versions.sh`, and the `CHANGELOG.md`-is-in-sync diff check described above. `security-review.yml` runs Anthropic's `claude-code-security-review` action on every push/PR and fails on high-severity findings (needs an `ANTHROPIC_API_KEY` repo secret, added manually in GitHub — never put it in a workflow file or commit it). `main` is protected: both of those must pass before a PR can merge, and direct pushes are blocked. `release.yml` runs on every push to `main`; if `magic-timeline.php`'s version is newer than the latest git tag it re-validates with `bin/check-versions.sh`, builds the zip with `bin/build-release.sh`, tags `v<version>`, and publishes a GitHub Release with that zip attached and the matching `CHANGELOG.md` section as release notes — if the version didn't change, the workflow is a no-op. This means **a version bump merged into `main` immediately and automatically publishes a public release** — don't bump the version in a PR until it's actually ready to ship.
+**CI/CD** (`.github/workflows/`): `ci.yml` runs on every push/PR — PHP syntax across a small version matrix, `phpcs --standard=WordPress-Extra` (with `WordPress.Files.FileName` excluded — see below), a `PHPCompatibilityWP` check pinned to the 7.4 floor, `bin/check-versions.sh`, and the `CHANGELOG.md`-is-in-sync diff check described above. `main` is protected: all of those must pass before a PR can merge, and direct pushes (including from admins) are blocked. `release.yml` runs on every push to `main`; if `magic-timeline.php`'s version is newer than the latest git tag it re-validates with `bin/check-versions.sh`, builds the zip with `bin/build-release.sh`, tags `v<version>`, and publishes a GitHub Release with that zip attached and the matching `CHANGELOG.md` section as release notes — if the version didn't change, the workflow is a no-op. This means **a version bump merged into `main` immediately and automatically publishes a public release** — don't bump the version in a PR until it's actually ready to ship.
+
+**Security review is a local step, not a CI gate.** There was a `security-review.yml` workflow using Anthropic's `claude-code-security-review` GitHub Action, deliberately removed because it needs an `ANTHROPIC_API_KEY` repo secret, which this project doesn't want to provision. Instead, run Claude Code's own `/security-review` slash command locally against your changes before opening a PR. If CI/CD requirements ever change and an automated gate becomes worth the API key, the removed workflow's design (including the `run-every-commit: true` fix — the action caches "already scanned this PR" by PR number, not by commit, and silently skips re-scanning on later pushes without it) is preserved in git history (`security-review.yml`, added then removed shortly after in the same PR that first set up this repo's CI/CD).
+
+**`WordPress.Files.FileName` is excluded from the WordPress-Extra check everywhere** (`ci.yml` and the commands above) because it flags `magic-timeline.php` for containing `Magic_Timeline_Loader` instead of living in a matching `class-magic-timeline-loader.php` — deliberate, per the Load order note above. An inline `// phpcs:ignore` comment does **not** work for this specific sniff: it always reports on line 1 of the file regardless of which line the offending class is actually declared on, so a line-anchored ignore comment can never target it. The CLI-level `--exclude` is the only fix that actually works; don't reintroduce a per-line ignore comment expecting it to suppress this one.
 
 ### Manual verification against a live WordPress install
 
