@@ -29,6 +29,12 @@ jobs:
         with:
           comment-pr: true
           claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # The action otherwise caches "already scanned this PR" per PR
+          # number (not per-commit) and skips re-running on later pushes —
+          # which would silently defeat "review runs on every push." Forcing
+          # it here trades that for the documented risk of slightly more
+          # false positives on PRs with many commits.
+          run-every-commit: true
 
       - name: Block merge on high-severity findings
         run: |
