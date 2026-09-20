@@ -10,6 +10,20 @@ A single-purpose Elementor widget plugin (no Elementor Pro dependency): a vertic
 
 **Never let CSS default any `.mtl-*` content to hidden (`opacity: 0`, `visibility: hidden`, `display: none`, etc.) pending a JS action to reveal it — even for the entrance animation.** A prior version of `assets/css/timeline.css` did exactly this for the scroll-in animation (items started at `opacity: 0`, only a JS-added `.mtl-in-view` class revealed them), and it made every timeline item permanently invisible inside Elementor's own editor preview iframe, because the widget's AJAX-injected markup didn't reliably fire `timeline.js`'s init triggers there — while the PHP render and CSS were both completely correct, so it looked like a phantom rendering bug. If IntersectionObserver, or any future JS-driven visual feature, needs a "before" state, implement it the way the fix does now: JS adds an opt-in class (e.g. `.mtl-js-animating`) to the wrapper *immediately before* it starts acting on an element, and only *that* class's presence — never the plain base state — triggers the hidden/pre-animation CSS. If the script never runs for any reason, content must fall through to fully visible by default. See the `assets/js/timeline.js` entry under Architecture below for the full mechanism.
 
+**`load_plugin_textdomain()` in `magic-timeline.php` must stay, despite Plugin Check flagging it as discouraged (suppressed there with an inline `phpcs:ignore` and a comment explaining why).** Verified empirically, not just by reading docs: WordPress core's automatic just-in-time translation loading (`WP_Textdomain_Registry::get_paths_for_domain()`) only ever checks `wp-content/languages/plugins/` (where WordPress.org's own translation system deposits files) — a plugin's own bundled `languages/` folder is *only* discoverable if `load_plugin_textdomain()` registers it as a custom path. Removing the call would silently break the bundled `.pot`/future `.mo` files for anyone installing via GitHub releases rather than WordPress.org. Don't trust a test of this on `tastegallery.test` (see below) — test it on an isolated instance if it's ever in question again.
+
+**Never test i18n/text-domain-loading behavior on `tastegallery.test`, and never bulk-deactivate its plugins for any test.** That site has both Loco Translate and Polylang active, both of which patch directly into WordPress core's translation-loading filters (`lang_dir_for_domain`, `pre_get_language_files_from_path`) to add their own fallback discovery — so any experiment involving `load_plugin_textdomain()`, `__()`, or gettext domains will give a false result there that doesn't reflect what an ordinary end user's site does. Separately, and more importantly: **the active theme (Electrolux) hard-depends on Polylang's `pll_register_string()` at load time** — deactivating Polylang there (even briefly, even just to isolate a test variable) fatals the entire site immediately, for every single page and every `wp` command, since the theme loads unconditionally during WordPress's core bootstrap. This already happened once. If a test genuinely needs a plugin's original active-plugin state changed, capture the exact list first (`wp plugin list --status=active --field=name`) so it can be restored — and if the site ends up broken this way, `wp plugin activate` cannot fix it (the fatal happens before WP-CLI's command logic even runs); the only way back in is a direct `wp db query` write to the `active_plugins` option (table prefix on this install is `elx_`, not `wp_`) using a re-serialized full plugin list, bypassing the broken bootstrap entirely.
+
+For anything that genuinely needs a clean-room WordPress (no third-party plugins, no shared-site side effects) — like the i18n test above — build a fully disposable instance instead of touching `tastegallery.test`:
+```bash
+mysql -u root -prajan8382 -e "CREATE DATABASE IF NOT EXISTS some_throwaway_name;"
+wp core download --version=6.8.1 --path=/path/to/scratch/dir
+wp config create --path=/path/to/scratch/dir --dbname=some_throwaway_name --dbuser=root --dbpass=rajan8382 --dbhost=localhost --skip-check
+wp core install --path=/path/to/scratch/dir --url="http://test.local" --title="Test" --admin_user=admin --admin_password=admin --admin_email=test@example.com --skip-email
+# copy the plugin folder in, `wp plugin activate <slug> --path=...`, test, then drop the database and delete the directory
+```
+(DB credentials here are this machine's local dev MySQL root password from `tastegallery`'s own `wp-config.php` — safe to reuse for a same-machine throwaway database, not a real secret.)
+
 ## Commands
 
 Run these from the plugin root (`wp-content/plugins/magic-timeline`).
@@ -23,6 +37,9 @@ phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules -
 
 # Auto-fix fixable coding-standard violations
 phpcbf --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules --exclude=WordPress.Files.FileName .
+
+# Check the code doesn't use PHP syntax newer than the declared 7.4 floor
+phpcs --standard=PHPCompatibilityWP --runtime-set testVersion 7.4- --extensions=php --ignore=vendor,node_modules,dist .
 
 # Regenerate the translation template after adding/changing any __()/_e() string
 wp i18n make-pot . languages/magic-timeline.pot --domain=magic-timeline --slug=magic-timeline
@@ -48,6 +65,25 @@ Before it packages anything, the script also refuses to run unless the release i
 **`bin/check-versions.sh`** holds the version-consistency + changelog-entry-exists checks (shared by `bin/build-release.sh` and CI) — it's the single place that logic lives; don't re-inline it elsewhere.
 
 **CI/CD** (`.github/workflows/`): `ci.yml` runs on every push/PR — PHP syntax across a small version matrix, `phpcs --standard=WordPress-Extra` (with `WordPress.Files.FileName` excluded — see below), a `PHPCompatibilityWP` check pinned to the 7.4 floor, `bin/check-versions.sh`, and the `CHANGELOG.md`-is-in-sync diff check described above. `main` is protected: all of those must pass before a PR can merge, and direct pushes (including from admins) are blocked. `release.yml` runs on every push to `main`; if `magic-timeline.php`'s version is newer than the latest git tag it re-validates with `bin/check-versions.sh`, builds the zip with `bin/build-release.sh`, tags `v<version>`, and publishes a GitHub Release with that zip attached and the matching `CHANGELOG.md` section as release notes — if the version didn't change, the workflow is a no-op. This means **a version bump merged into `main` immediately and automatically publishes a public release** — don't bump the version in a PR until it's actually ready to ship.
+
+### Releasing a change
+
+`main` is protected (no direct pushes, `enforce_admins` on), so every change — including a version bump — goes through a branch and PR:
+
+```bash
+git checkout main && git pull --ff-only origin main
+git checkout -b feature/short-name          # or fix/short-name
+# ... make the change; for a release, also bump Version everywhere (see above) and add a readme.txt changelog entry ...
+bin/build-release.sh                        # sanity-checks versions, regenerates CHANGELOG.md, builds a test zip
+git add -A && git commit -m "..."
+git push -u origin feature/short-name
+gh pr create --base main --head feature/short-name --title "..." --body "..."
+gh pr checks <number>                       # repeat until PHP Syntax (7.4/8.3), Code Standards, Versions & Changelog all show "pass"
+gh pr merge <number> --squash --delete-branch
+git checkout main && git pull --ff-only origin main
+```
+
+If the merged PR bumped the version, `release.yml` takes it from there automatically (tags `v<version>`, builds the zip, publishes the GitHub Release) — there is no manual release step. A PR that doesn't bump the version is just a normal merge; nothing else happens.
 
 **Security review is a local step, not a CI gate.** There was a `security-review.yml` workflow using Anthropic's `claude-code-security-review` GitHub Action, deliberately removed because it needs an `ANTHROPIC_API_KEY` repo secret, which this project doesn't want to provision. Instead, run Claude Code's own `/security-review` slash command locally against your changes before opening a PR. If CI/CD requirements ever change and an automated gate becomes worth the API key, the removed workflow's design (including the `run-every-commit: true` fix — the action caches "already scanned this PR" by PR number, not by commit, and silently skips re-scanning on later pushes without it) is preserved in git history (`security-review.yml`, added then removed shortly after in the same PR that first set up this repo's CI/CD).
 
