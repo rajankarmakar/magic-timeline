@@ -44,6 +44,7 @@ final class Magic_Timeline_Loader {
 	}
 
 	public function on_plugins_loaded() {
+		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- Kept deliberately: this plugin also ships outside WordPress.org (GitHub releases), where there is no wp-content/languages/plugins/ auto-population to fall back on. WP core checks that WP.org-managed location first regardless, so this only ever loads our bundled languages/ files when a WP.org-served translation isn't already present.
 		load_plugin_textdomain( 'magic-timeline', false, dirname( MAGIC_TIMELINE_BASENAME ) . '/languages' );
 
 		if ( ! $this->is_compatible() ) {
