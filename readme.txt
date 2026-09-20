@@ -2,13 +2,13 @@
 Contributors: rajankarmakar
 Tags: elementor, timeline, changelog, history, vertical timeline
 Requires at least: 5.8
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A fully customizable vertical timeline widget for Elementor — icon badges, connecting line, date pills, status badges and buttons, all styleable natively from the Elementor panel.
+A customizable vertical timeline widget for Elementor — icon badges, date pills, status badges, buttons, and native Style tab controls.
 
 == Description ==
 
