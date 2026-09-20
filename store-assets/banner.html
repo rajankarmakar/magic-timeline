@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+  html, body { margin: 0; padding: 0; overflow: hidden; height: 100%; width: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: linear-gradient(120deg, #4338CA 0%, #4F46E5 50%, #6366F1 100%);
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 0 6%;
+    gap: 5%;
+  }
+  .icon {
+    flex: 0 0 auto;
+    width: 22%;
+    max-width: 220px;
+    aspect-ratio: 1;
+    border-radius: 20%;
+    background: rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon svg { width: 62%; height: 62%; }
+  .text { color: #FFFFFF; }
+  .title {
+    font-weight: 800;
+    font-size: 4.2vw;
+    line-height: 1.05;
+    margin: 0 0 0.6vw;
+    letter-spacing: -0.01em;
+  }
+  .tagline {
+    font-weight: 400;
+    font-size: 1.75vw;
+    opacity: 0.88;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="icon">
+    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <line x1="172" y1="120" x2="172" y2="392" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" opacity="0.55"/>
+      <circle cx="172" cy="144" r="30" fill="#FFFFFF"/>
+      <circle cx="172" cy="256" r="30" fill="#FFFFFF"/>
+      <circle cx="172" cy="368" r="30" fill="#FFFFFF"/>
+      <rect x="224" y="126" width="140" height="36" rx="18" fill="#FFFFFF" opacity="0.92"/>
+      <rect x="224" y="238" width="188" height="36" rx="18" fill="#FFFFFF" opacity="0.92"/>
+      <rect x="224" y="350" width="112" height="36" rx="18" fill="#FFFFFF" opacity="0.92"/>
+    </svg>
+  </div>
+  <div class="text">
+    <p class="title">Magic Timeline</p>
+    <p class="tagline">Vertical, alternating &amp; horizontal timelines for Elementor</p>
+  </div>
+</body>
+</html>

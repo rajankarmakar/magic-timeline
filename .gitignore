@@ -1,0 +1,27 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories (none checked in today, but keep out if ever added)
+/vendor/
+/node_modules/
+
+# Tooling caches
+.phpcs-cache
+.phpunit.result.cache
+
+# Logs
+*.log
+
+# Packaged release output (bin/build-release.sh)
+/dist/
+*.zip
+
+# Local environment/secrets
+.env

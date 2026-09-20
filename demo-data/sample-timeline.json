@@ -1,0 +1,102 @@
+{
+	"content": [
+		{
+			"id": "1a2b3c4",
+			"elType": "section",
+			"settings": {
+				"gap": "extended",
+				"layout": "boxed",
+				"padding": {
+					"unit": "px",
+					"top": "60",
+					"right": "20",
+					"bottom": "60",
+					"left": "20",
+					"isLinked": false
+				}
+			},
+			"elements": [
+				{
+					"id": "2b3c4d5",
+					"elType": "column",
+					"settings": {
+						"_column_size": 100
+					},
+					"elements": [
+						{
+							"id": "3c4d5e6",
+							"elType": "widget",
+							"widgetType": "magic-timeline",
+							"settings": {
+								"layout_direction": "vertical",
+								"icon_shape": "circle",
+								"show_line": "yes",
+								"enable_animation": "yes",
+								"disable_animation_mobile": "yes",
+								"timeline_items": [
+									{
+										"_id": "item001",
+										"item_icon": {
+											"value": "far fa-calendar-alt",
+											"library": "fa-regular"
+										},
+										"item_date": "March 13th, 2025",
+										"item_title": "Initial Release",
+										"item_badge_show": "yes",
+										"item_badge_text": "Latest",
+										"item_description": "We officially launched the plugin with core timeline functionality and full Elementor style controls.",
+										"item_button_show": "yes",
+										"item_button_text": "Download ZIP",
+										"item_button_icon": {
+											"value": "fas fa-download",
+											"library": "fa-solid"
+										},
+										"item_button_url": {
+											"url": "#",
+											"is_external": "",
+											"nofollow": ""
+										}
+									},
+									{
+										"_id": "item002",
+										"item_icon": {
+											"value": "far fa-calendar-alt",
+											"library": "fa-regular"
+										},
+										"item_date": "February 1st, 2025",
+										"item_title": "Beta Testing Phase",
+										"item_badge_show": "",
+										"item_badge_text": "",
+										"item_description": "Gathered feedback from beta users and refined the widget based on real-world usage.",
+										"item_button_show": ""
+									},
+									{
+										"_id": "item003",
+										"item_icon": {
+											"value": "far fa-calendar-alt",
+											"library": "fa-regular"
+										},
+										"item_date": "December 10th, 2024",
+										"item_title": "Project Kickoff",
+										"item_badge_show": "",
+										"item_badge_text": "",
+										"item_description": "Started development of the Magic Timeline widget with a focus on clean design and flexibility.",
+										"item_button_show": ""
+									}
+								]
+							},
+							"elements": [],
+							"isInner": false
+						}
+					],
+					"isInner": false
+				}
+			],
+			"isInner": false
+		}
+	],
+	"page_settings": [],
+	"version": "0.4",
+	"title": "Magic Timeline Demo",
+	"type": "section"
+}

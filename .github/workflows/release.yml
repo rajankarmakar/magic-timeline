@@ -1,0 +1,63 @@
+name: Release
+
+# Runs on every push to main (i.e. right after a PR merges, since main is
+# protected and direct pushes are blocked). If the version in
+# magic-timeline.php doesn't already have a matching git tag, this builds
+# and publishes a new GitHub Release automatically. If the version is
+# unchanged from the latest tag, this is a no-op — an ordinary merge that
+# doesn't bump the version does not trigger a release.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write # needed to create tags/releases
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history, so existing tags are visible
+
+      - name: Check version consistency and changelog entry
+        id: version
+        run: |
+          VERSION=$(bin/check-versions.sh)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+          if git rev-parse "refs/tags/v$VERSION" >/dev/null 2>&1; then
+            echo "is_new=false" >> "$GITHUB_OUTPUT"
+            echo "Tag v$VERSION already exists — nothing to release."
+          else
+            echo "is_new=true" >> "$GITHUB_OUTPUT"
+            echo "No tag v$VERSION yet — will build and publish a release."
+          fi
+
+      - name: Build release zip
+        if: steps.version.outputs.is_new == 'true'
+        run: bin/build-release.sh
+
+      - name: Extract this version's changelog section as release notes
+        if: steps.version.outputs.is_new == 'true'
+        run: |
+          awk -v ver="## ${{ steps.version.outputs.version }}" '
+            $0 == ver { found=1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > /tmp/release-notes.md
+          echo "--- Release notes ---"
+          cat /tmp/release-notes.md
+
+      - name: Create GitHub Release
+        if: steps.version.outputs.is_new == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "v$VERSION" \
+            "dist/magic-timeline-$VERSION.zip" \
+            --title "v$VERSION" \
+            --notes-file /tmp/release-notes.md

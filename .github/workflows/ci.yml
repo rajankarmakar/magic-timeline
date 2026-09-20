@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  syntax:
+    name: PHP Syntax (${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ["7.4", "8.3"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Lint all PHP files
+        run: |
+          find . -name "*.php" -not -path "./dist/*" -print0 \
+            | xargs -0 -n1 php -l
+
+  code-standards:
+    name: Code Standards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          tools: composer
+
+      - name: Install PHP_CodeSniffer + WordPress + PHPCompatibility standards
+        run: |
+          composer global require --no-progress \
+            "squizlabs/php_codesniffer:^3.9" \
+            "wp-coding-standards/wpcs:^3.1" \
+            "phpcompatibility/phpcompatibility-wp:^2.1" \
+            "dealerdirect/phpcodesniffer-composer-installer:^1.0"
+          echo "$HOME/.composer/vendor/bin" >> "$GITHUB_PATH"
+
+      - name: WordPress Coding Standards (WordPress-Extra)
+        run: phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules,dist .
+
+      - name: PHP 7.4 compatibility
+        run: phpcs --standard=PHPCompatibilityWP --runtime-set testVersion 7.4- --extensions=php --ignore=vendor,node_modules,dist .
+
+  versions-and-changelog:
+    name: Versions & Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check version consistency and changelog entry
+        run: bin/check-versions.sh
+
+      - name: Verify CHANGELOG.md is in sync with readme.txt
+        run: |
+          bin/generate-changelog.sh /tmp/CHANGELOG.generated.md
+          if ! diff -q CHANGELOG.md /tmp/CHANGELOG.generated.md > /dev/null; then
+            echo "::error::CHANGELOG.md is out of date. Run 'bin/generate-changelog.sh' locally and commit the result." >&2
+            diff CHANGELOG.md /tmp/CHANGELOG.generated.md || true
+            exit 1
+          fi
