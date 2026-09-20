@@ -47,7 +47,12 @@ jobs:
           echo "$HOME/.composer/vendor/bin" >> "$GITHUB_PATH"
 
       - name: WordPress Coding Standards (WordPress-Extra)
-        run: phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules,dist .
+        # WordPress.Files.FileName is excluded: it would otherwise flag
+        # magic-timeline.php for containing Magic_Timeline_Loader instead of
+        # a matching class-magic-timeline-loader.php — deliberate, since that
+        # bootstrap class runs before we even know Elementor is active, too
+        # early to justify a require_once for a separate file.
+        run: phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules,dist --exclude=WordPress.Files.FileName .
 
       - name: PHP 7.4 compatibility
         run: phpcs --standard=PHPCompatibilityWP --runtime-set testVersion 7.4- --extensions=php --ignore=vendor,node_modules,dist .

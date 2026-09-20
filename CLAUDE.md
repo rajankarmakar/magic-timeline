@@ -19,10 +19,10 @@ Run these from the plugin root (`wp-content/plugins/magic-timeline`).
 php -l widgets/class-timeline-widget.php
 
 # WordPress coding standards (the project standard is WordPress-Extra)
-phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules .
+phpcs --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules --exclude=WordPress.Files.FileName .
 
 # Auto-fix fixable coding-standard violations
-phpcbf --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules .
+phpcbf --standard=WordPress-Extra --extensions=php --ignore=vendor,node_modules --exclude=WordPress.Files.FileName .
 
 # Regenerate the translation template after adding/changing any __()/_e() string
 wp i18n make-pot . languages/magic-timeline.pot --domain=magic-timeline --slug=magic-timeline
