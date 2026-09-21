@@ -1,6 +1,6 @@
-# Magic Timeline — Usage Guide
+# Magic Timeline for Elementor — Usage Guide
 
-Thanks for using Magic Timeline! This guide covers installation, adding the widget, and styling it to match your site.
+Thanks for using Magic Timeline for Elementor! This guide covers installation, adding the widget, and styling it to match your site.
 
 ## 1. Requirements
 
@@ -11,9 +11,9 @@ Thanks for using Magic Timeline! This guide covers installation, adding the widg
 ## 2. Installation
 
 1. Go to **Plugins → Add New → Upload Plugin** in your WordPress dashboard.
-2. Choose the `magic-timeline.zip` file and click **Install Now**.
+2. Choose the `magic-timeline-for-elementor.zip` file and click **Install Now**.
 3. Click **Activate**.
-4. If Elementor isn't already installed, install and activate it from the WordPress plugin directory — Magic Timeline will show an admin notice if it's missing.
+4. If Elementor isn't already installed, install and activate it from the WordPress plugin directory — Magic Timeline for Elementor will show an admin notice if it's missing.
 
 ## 3. Adding the widget
 
@@ -62,12 +62,12 @@ If you'd rather start from a filled-in example than the default three items:
 
 1. In the WordPress admin, go to **Templates → Saved Templates → Import Templates** (found under the Elementor menu).
 2. Upload `demo-data/sample-timeline.json` (included in the plugin's `demo-data` folder).
-3. Open **Saved Templates**, find "Magic Timeline Demo", and insert it into any page.
+3. Open **Saved Templates**, find "Magic Timeline for Elementor Demo", and insert it into any page.
 
 ## 8. Troubleshooting
 
 - **The widget doesn't appear in the panel** — confirm Elementor is active and up to date, then reload the editor. Elementor caches its widget list; if it still doesn't show, go to **Elementor → Tools → Regenerate CSS & Data**.
-- **Styles look unstyled/plain** — this usually means a caching plugin is serving an old version of a page. Clear your site cache after updating Magic Timeline.
+- **Styles look unstyled/plain** — this usually means a caching plugin is serving an old version of a page. Clear your site cache after updating Magic Timeline for Elementor.
 - **Icons aren't showing** — pick an icon explicitly in the icon control for each item; a truly empty icon field renders nothing.
 
 ## 9. Support

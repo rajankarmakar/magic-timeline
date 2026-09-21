@@ -1,4 +1,4 @@
-=== Magic Timeline ===
+=== Magic Timeline for Elementor ===
 Contributors: rajankarmakar
 Tags: elementor, timeline, changelog, history, vertical timeline
 Requires at least: 5.8
@@ -12,7 +12,7 @@ A customizable vertical timeline widget for Elementor — icon badges, date pill
 
 == Description ==
 
-Magic Timeline adds a single, powerful widget to Elementor's editor: a vertical timeline built for changelogs, roadmaps, company history, process steps, and "what's new" pages.
+Magic Timeline for Elementor adds a single, powerful widget to Elementor's editor: a vertical timeline built for changelogs, roadmaps, company history, process steps, and "what's new" pages.
 
 Every item in the timeline is made up of:
 
@@ -32,7 +32,7 @@ Every item in the timeline is made up of:
 * Full native Style tab controls: typography, color, background, border, box-shadow, spacing and responsive controls (desktop / tablet / mobile) for every part of the widget
 * Optional scroll-in entrance animation, with a switch to disable it on mobile
 * One-click demo content: import `demo-data/sample-timeline.json` through Elementor's own "Import Template" screen to get a fully populated section instantly
-* Translation-ready (text domain: `magic-timeline`), with a `.pot` file included
+* Translation-ready (text domain: `magic-timeline-for-elementor`), with a `.pot` file included
 * Clean, prefixed, namespaced code with escaped output — safe to run alongside any other plugin or theme
 
 = Requirements =
@@ -43,7 +43,7 @@ Every item in the timeline is made up of:
 
 == Installation ==
 
-1. Upload the `magic-timeline` folder to `/wp-content/plugins/`, or install the zip through **Plugins → Add New → Upload Plugin**.
+1. Upload the `magic-timeline-for-elementor` folder to `/wp-content/plugins/`, or install the zip through **Plugins → Add New → Upload Plugin**.
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Make sure Elementor is installed and activated.
 4. Edit any page with Elementor and find **Magic Timeline** in the widget panel, under its own "Magic Timeline" category.
@@ -53,13 +53,13 @@ Every item in the timeline is made up of:
 
 1. In WordPress, go to **Templates → Saved Templates → Import Templates** (under the Elementor menu).
 2. Upload `demo-data/sample-timeline.json` from the plugin folder.
-3. Insert the imported template into any page to see the reference layout with sample content already filled in.
+3. Insert the imported "Magic Timeline for Elementor Demo" template into any page to see the reference layout with sample content already filled in.
 
 == Frequently Asked Questions ==
 
 = Does this require Elementor Pro? =
 
-No. Magic Timeline works with the free version of Elementor.
+No. Magic Timeline for Elementor works with the free version of Elementor.
 
 = Can I use my own icons? =
 

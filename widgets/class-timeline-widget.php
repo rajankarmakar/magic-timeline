@@ -21,7 +21,7 @@ class Timeline_Widget extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Magic Timeline', 'magic-timeline' );
+		return __( 'Magic Timeline', 'magic-timeline-for-elementor' );
 	}
 
 	public function get_icon() {
@@ -65,7 +65,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_layout',
 			array(
-				'label' => __( 'Layout', 'magic-timeline' ),
+				'label' => __( 'Layout', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -73,13 +73,13 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'layout_direction',
 			array(
-				'label'        => __( 'Layout', 'magic-timeline' ),
+				'label'        => __( 'Layout', 'magic-timeline-for-elementor' ),
 				'type'         => Controls_Manager::SELECT,
 				'default'      => 'vertical',
 				'options'      => array(
-					'vertical'   => __( 'Single Column', 'magic-timeline' ),
-					'alternate'  => __( 'Alternating', 'magic-timeline' ),
-					'horizontal' => __( 'Horizontal', 'magic-timeline' ),
+					'vertical'   => __( 'Single Column', 'magic-timeline-for-elementor' ),
+					'alternate'  => __( 'Alternating', 'magic-timeline-for-elementor' ),
+					'horizontal' => __( 'Horizontal', 'magic-timeline-for-elementor' ),
 				),
 				'prefix_class' => 'mtl-layout-',
 			)
@@ -88,12 +88,12 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_shape',
 			array(
-				'label'        => __( 'Icon Badge Shape', 'magic-timeline' ),
+				'label'        => __( 'Icon Badge Shape', 'magic-timeline-for-elementor' ),
 				'type'         => Controls_Manager::SELECT,
 				'default'      => 'circle',
 				'options'      => array(
-					'circle' => __( 'Circle', 'magic-timeline' ),
-					'square' => __( 'Square', 'magic-timeline' ),
+					'circle' => __( 'Circle', 'magic-timeline-for-elementor' ),
+					'square' => __( 'Square', 'magic-timeline-for-elementor' ),
 				),
 				'prefix_class' => 'mtl-icon-shape-',
 			)
@@ -102,10 +102,10 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'show_line',
 			array(
-				'label'        => __( 'Connecting Line', 'magic-timeline' ),
+				'label'        => __( 'Connecting Line', 'magic-timeline-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'magic-timeline' ),
-				'label_off'    => __( 'Hide', 'magic-timeline' ),
+				'label_on'     => __( 'Show', 'magic-timeline-for-elementor' ),
+				'label_off'    => __( 'Hide', 'magic-timeline-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -114,10 +114,10 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'enable_animation',
 			array(
-				'label'        => __( 'Entrance Animation', 'magic-timeline' ),
+				'label'        => __( 'Entrance Animation', 'magic-timeline-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'On', 'magic-timeline' ),
-				'label_off'    => __( 'Off', 'magic-timeline' ),
+				'label_on'     => __( 'On', 'magic-timeline-for-elementor' ),
+				'label_off'    => __( 'Off', 'magic-timeline-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -126,10 +126,10 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'disable_animation_mobile',
 			array(
-				'label'        => __( 'Disable Animation on Mobile', 'magic-timeline' ),
+				'label'        => __( 'Disable Animation on Mobile', 'magic-timeline-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Yes', 'magic-timeline' ),
-				'label_off'    => __( 'No', 'magic-timeline' ),
+				'label_on'     => __( 'Yes', 'magic-timeline-for-elementor' ),
+				'label_off'    => __( 'No', 'magic-timeline-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 				'condition'    => array( 'enable_animation' => 'yes' ),
@@ -146,7 +146,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_items',
 			array(
-				'label' => __( 'Timeline Items', 'magic-timeline' ),
+				'label' => __( 'Timeline Items', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -156,7 +156,7 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_icon',
 			array(
-				'label'   => __( 'Icon', 'magic-timeline' ),
+				'label'   => __( 'Icon', 'magic-timeline-for-elementor' ),
 				'type'    => Controls_Manager::ICONS,
 				'default' => array(
 					'value'   => 'far fa-calendar-alt',
@@ -168,9 +168,9 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_date',
 			array(
-				'label'       => __( 'Date', 'magic-timeline' ),
+				'label'       => __( 'Date', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => __( 'January 1st, 2025', 'magic-timeline' ),
+				'default'     => __( 'January 1st, 2025', 'magic-timeline-for-elementor' ),
 				'label_block' => true,
 			)
 		);
@@ -178,9 +178,9 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_title',
 			array(
-				'label'       => __( 'Title', 'magic-timeline' ),
+				'label'       => __( 'Title', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => __( 'Timeline Title', 'magic-timeline' ),
+				'default'     => __( 'Timeline Title', 'magic-timeline-for-elementor' ),
 				'label_block' => true,
 			)
 		);
@@ -188,10 +188,10 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_badge_show',
 			array(
-				'label'        => __( 'Status Badge', 'magic-timeline' ),
+				'label'        => __( 'Status Badge', 'magic-timeline-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'magic-timeline' ),
-				'label_off'    => __( 'Hide', 'magic-timeline' ),
+				'label_on'     => __( 'Show', 'magic-timeline-for-elementor' ),
+				'label_off'    => __( 'Hide', 'magic-timeline-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => '',
 			)
@@ -200,9 +200,9 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_badge_text',
 			array(
-				'label'       => __( 'Badge Text', 'magic-timeline' ),
+				'label'       => __( 'Badge Text', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => __( 'Latest', 'magic-timeline' ),
+				'default'     => __( 'Latest', 'magic-timeline-for-elementor' ),
 				'label_block' => true,
 				'condition'   => array( 'item_badge_show' => 'yes' ),
 			)
@@ -211,9 +211,9 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_description',
 			array(
-				'label'       => __( 'Description', 'magic-timeline' ),
+				'label'       => __( 'Description', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => __( 'Describe what happened at this point in the timeline.', 'magic-timeline' ),
+				'default'     => __( 'Describe what happened at this point in the timeline.', 'magic-timeline-for-elementor' ),
 				'rows'        => 4,
 				'label_block' => true,
 			)
@@ -222,10 +222,10 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_button_show',
 			array(
-				'label'        => __( 'Button', 'magic-timeline' ),
+				'label'        => __( 'Button', 'magic-timeline-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'magic-timeline' ),
-				'label_off'    => __( 'Hide', 'magic-timeline' ),
+				'label_on'     => __( 'Show', 'magic-timeline-for-elementor' ),
+				'label_off'    => __( 'Hide', 'magic-timeline-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => '',
 			)
@@ -234,9 +234,9 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_button_text',
 			array(
-				'label'       => __( 'Button Text', 'magic-timeline' ),
+				'label'       => __( 'Button Text', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => __( 'Download ZIP', 'magic-timeline' ),
+				'default'     => __( 'Download ZIP', 'magic-timeline-for-elementor' ),
 				'label_block' => true,
 				'condition'   => array( 'item_button_show' => 'yes' ),
 			)
@@ -245,7 +245,7 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_button_icon',
 			array(
-				'label'     => __( 'Button Icon', 'magic-timeline' ),
+				'label'     => __( 'Button Icon', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::ICONS,
 				'default'   => array(
 					'value'   => 'fas fa-download',
@@ -258,9 +258,9 @@ class Timeline_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_button_url',
 			array(
-				'label'         => __( 'Button Link', 'magic-timeline' ),
+				'label'         => __( 'Button Link', 'magic-timeline-for-elementor' ),
 				'type'          => Controls_Manager::URL,
-				'placeholder'   => __( 'https://your-link.com', 'magic-timeline' ),
+				'placeholder'   => __( 'https://your-link.com', 'magic-timeline-for-elementor' ),
 				'default'       => array(
 					'url' => '#',
 				),
@@ -272,29 +272,29 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'timeline_items',
 			array(
-				'label'       => __( 'Items', 'magic-timeline' ),
+				'label'       => __( 'Items', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'title_field' => '{{{ item_title }}}',
 				'default'     => array(
 					array(
-						'item_title'       => __( 'Initial Release', 'magic-timeline' ),
-						'item_date'        => __( 'March 13th, 2025', 'magic-timeline' ),
+						'item_title'       => __( 'Initial Release', 'magic-timeline-for-elementor' ),
+						'item_date'        => __( 'March 13th, 2025', 'magic-timeline-for-elementor' ),
 						'item_badge_show'  => 'yes',
-						'item_badge_text'  => __( 'Latest', 'magic-timeline' ),
-						'item_description' => __( 'We officially launched the plugin with core timeline functionality and full Elementor style controls.', 'magic-timeline' ),
+						'item_badge_text'  => __( 'Latest', 'magic-timeline-for-elementor' ),
+						'item_description' => __( 'We officially launched the plugin with core timeline functionality and full Elementor style controls.', 'magic-timeline-for-elementor' ),
 						'item_button_show' => 'yes',
-						'item_button_text' => __( 'Download ZIP', 'magic-timeline' ),
+						'item_button_text' => __( 'Download ZIP', 'magic-timeline-for-elementor' ),
 					),
 					array(
-						'item_title'       => __( 'Beta Testing Phase', 'magic-timeline' ),
-						'item_date'        => __( 'February 1st, 2025', 'magic-timeline' ),
-						'item_description' => __( 'Gathered feedback from beta users and refined the widget based on real-world usage.', 'magic-timeline' ),
+						'item_title'       => __( 'Beta Testing Phase', 'magic-timeline-for-elementor' ),
+						'item_date'        => __( 'February 1st, 2025', 'magic-timeline-for-elementor' ),
+						'item_description' => __( 'Gathered feedback from beta users and refined the widget based on real-world usage.', 'magic-timeline-for-elementor' ),
 					),
 					array(
-						'item_title'       => __( 'Project Kickoff', 'magic-timeline' ),
-						'item_date'        => __( 'December 10th, 2024', 'magic-timeline' ),
-						'item_description' => __( 'Started development of the Magic Timeline widget with a focus on clean design and flexibility.', 'magic-timeline' ),
+						'item_title'       => __( 'Project Kickoff', 'magic-timeline-for-elementor' ),
+						'item_date'        => __( 'December 10th, 2024', 'magic-timeline-for-elementor' ),
+						'item_description' => __( 'Started development of the Magic Timeline widget with a focus on clean design and flexibility.', 'magic-timeline-for-elementor' ),
 					),
 				),
 			)
@@ -310,7 +310,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_container',
 			array(
-				'label' => __( 'Container', 'magic-timeline' ),
+				'label' => __( 'Container', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -318,7 +318,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'container_max_width',
 			array(
-				'label'      => __( 'Max Width', 'magic-timeline' ),
+				'label'      => __( 'Max Width', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'range'      => array(
@@ -349,7 +349,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'container_padding',
 			array(
-				'label'      => __( 'Padding', 'magic-timeline' ),
+				'label'      => __( 'Padding', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
@@ -361,7 +361,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'container_radius',
 			array(
-				'label'      => __( 'Border Radius', 'magic-timeline' ),
+				'label'      => __( 'Border Radius', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
@@ -388,7 +388,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_line',
 			array(
-				'label'     => __( 'Connecting Line', 'magic-timeline' ),
+				'label'     => __( 'Connecting Line', 'magic-timeline-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'show_line' => 'yes' ),
 			)
@@ -397,7 +397,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'line_color',
 			array(
-				'label'     => __( 'Color', 'magic-timeline' ),
+				'label'     => __( 'Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#E4E7EC',
 				'selectors' => array(
@@ -409,7 +409,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'line_width',
 			array(
-				'label'      => __( 'Width', 'magic-timeline' ),
+				'label'      => __( 'Width', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -431,13 +431,13 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'line_style',
 			array(
-				'label'     => __( 'Style', 'magic-timeline' ),
+				'label'     => __( 'Style', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'solid',
 				'options'   => array(
-					'solid'  => __( 'Solid', 'magic-timeline' ),
-					'dashed' => __( 'Dashed', 'magic-timeline' ),
-					'dotted' => __( 'Dotted', 'magic-timeline' ),
+					'solid'  => __( 'Solid', 'magic-timeline-for-elementor' ),
+					'dashed' => __( 'Dashed', 'magic-timeline-for-elementor' ),
+					'dotted' => __( 'Dotted', 'magic-timeline-for-elementor' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .mtl-timeline' => '--mtl-line-style: {{VALUE}};',
@@ -448,9 +448,9 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'line_gap_color',
 			array(
-				'label'       => __( 'Gap Color Around Icon', 'magic-timeline' ),
+				'label'       => __( 'Gap Color Around Icon', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::COLOR,
-				'description' => __( 'Creates a halo around each icon badge so the line appears to break around it. Match this to the area behind your timeline.', 'magic-timeline' ),
+				'description' => __( 'Creates a halo around each icon badge so the line appears to break around it. Match this to the area behind your timeline.', 'magic-timeline-for-elementor' ),
 				'default'     => '#FFFFFF',
 				'selectors'   => array(
 					'{{WRAPPER}} .mtl-timeline' => '--mtl-line-gap-color: {{VALUE}};',
@@ -461,7 +461,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'line_gap_size',
 			array(
-				'label'      => __( 'Gap Size', 'magic-timeline' ),
+				'label'      => __( 'Gap Size', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -490,7 +490,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_icon',
 			array(
-				'label' => __( 'Icon Badge', 'magic-timeline' ),
+				'label' => __( 'Icon Badge', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -498,7 +498,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_size',
 			array(
-				'label'      => __( 'Badge Size', 'magic-timeline' ),
+				'label'      => __( 'Badge Size', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -520,7 +520,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_font_size',
 			array(
-				'label'      => __( 'Icon Size', 'magic-timeline' ),
+				'label'      => __( 'Icon Size', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -542,7 +542,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_color',
 			array(
-				'label'     => __( 'Icon Color', 'magic-timeline' ),
+				'label'     => __( 'Icon Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FFFFFF',
 				'selectors' => array(
@@ -579,7 +579,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_border_radius',
 			array(
-				'label'      => __( 'Border Radius', 'magic-timeline' ),
+				'label'      => __( 'Border Radius', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
@@ -591,7 +591,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_content_gap',
 			array(
-				'label'      => __( 'Spacing From Content', 'magic-timeline' ),
+				'label'      => __( 'Spacing From Content', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -620,7 +620,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_date',
 			array(
-				'label' => __( 'Date Pill', 'magic-timeline' ),
+				'label' => __( 'Date Pill', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -636,7 +636,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'date_color',
 			array(
-				'label'     => __( 'Text Color', 'magic-timeline' ),
+				'label'     => __( 'Text Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#475467',
 				'selectors' => array(
@@ -668,7 +668,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'date_radius',
 			array(
-				'label'      => __( 'Border Radius', 'magic-timeline' ),
+				'label'      => __( 'Border Radius', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'default'    => array(
@@ -688,7 +688,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'date_padding',
 			array(
-				'label'      => __( 'Padding', 'magic-timeline' ),
+				'label'      => __( 'Padding', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'default'    => array(
@@ -708,7 +708,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'date_margin_bottom',
 			array(
-				'label'      => __( 'Spacing Below', 'magic-timeline' ),
+				'label'      => __( 'Spacing Below', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -733,7 +733,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			array(
-				'label' => __( 'Title', 'magic-timeline' ),
+				'label' => __( 'Title', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -741,7 +741,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => __( 'Color', 'magic-timeline' ),
+				'label'     => __( 'Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#101828',
 				'selectors' => array(
@@ -761,7 +761,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'title_badge_gap',
 			array(
-				'label'      => __( 'Spacing From Badge', 'magic-timeline' ),
+				'label'      => __( 'Spacing From Badge', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -783,7 +783,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'title_margin_bottom',
 			array(
-				'label'      => __( 'Spacing Below', 'magic-timeline' ),
+				'label'      => __( 'Spacing Below', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -808,7 +808,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_badge',
 			array(
-				'label' => __( 'Status Badge', 'magic-timeline' ),
+				'label' => __( 'Status Badge', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -824,7 +824,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'badge_color',
 			array(
-				'label'     => __( 'Text Color', 'magic-timeline' ),
+				'label'     => __( 'Text Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#027A48',
 				'selectors' => array(
@@ -856,7 +856,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'badge_radius',
 			array(
-				'label'      => __( 'Border Radius', 'magic-timeline' ),
+				'label'      => __( 'Border Radius', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'default'    => array(
@@ -876,7 +876,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'badge_padding',
 			array(
-				'label'      => __( 'Padding', 'magic-timeline' ),
+				'label'      => __( 'Padding', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'default'    => array(
@@ -903,7 +903,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_description',
 			array(
-				'label' => __( 'Description', 'magic-timeline' ),
+				'label' => __( 'Description', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -911,7 +911,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			array(
-				'label'     => __( 'Color', 'magic-timeline' ),
+				'label'     => __( 'Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#475467',
 				'selectors' => array(
@@ -931,7 +931,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'description_margin_bottom',
 			array(
-				'label'      => __( 'Spacing Below', 'magic-timeline' ),
+				'label'      => __( 'Spacing Below', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -956,7 +956,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_button',
 			array(
-				'label' => __( 'Button', 'magic-timeline' ),
+				'label' => __( 'Button', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -973,13 +973,13 @@ class Timeline_Widget extends Widget_Base {
 
 		$this->start_controls_tab(
 			'button_tab_normal',
-			array( 'label' => __( 'Normal', 'magic-timeline' ) )
+			array( 'label' => __( 'Normal', 'magic-timeline-for-elementor' ) )
 		);
 
 		$this->add_control(
 			'button_text_color',
 			array(
-				'label'     => __( 'Text Color', 'magic-timeline' ),
+				'label'     => __( 'Text Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FFFFFF',
 				'selectors' => array(
@@ -1004,13 +1004,13 @@ class Timeline_Widget extends Widget_Base {
 
 		$this->start_controls_tab(
 			'button_tab_hover',
-			array( 'label' => __( 'Hover', 'magic-timeline' ) )
+			array( 'label' => __( 'Hover', 'magic-timeline-for-elementor' ) )
 		);
 
 		$this->add_control(
 			'button_text_color_hover',
 			array(
-				'label'     => __( 'Text Color', 'magic-timeline' ),
+				'label'     => __( 'Text Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .mtl-button:hover' => 'color: {{VALUE}};',
@@ -1030,7 +1030,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'button_border_color_hover',
 			array(
-				'label'     => __( 'Border Color', 'magic-timeline' ),
+				'label'     => __( 'Border Color', 'magic-timeline-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'condition' => array( 'button_border_border!' => '' ),
 				'selectors' => array(
@@ -1053,7 +1053,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'button_radius',
 			array(
-				'label'      => __( 'Border Radius', 'magic-timeline' ),
+				'label'      => __( 'Border Radius', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'default'    => array(
@@ -1073,7 +1073,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'button_padding',
 			array(
-				'label'      => __( 'Padding', 'magic-timeline' ),
+				'label'      => __( 'Padding', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'default'    => array(
@@ -1093,7 +1093,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'button_icon_gap',
 			array(
-				'label'      => __( 'Icon Spacing', 'magic-timeline' ),
+				'label'      => __( 'Icon Spacing', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -1115,7 +1115,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_control(
 			'button_margin_top',
 			array(
-				'label'      => __( 'Spacing Above', 'magic-timeline' ),
+				'label'      => __( 'Spacing Above', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -1144,7 +1144,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_spacing',
 			array(
-				'label' => __( 'Item Spacing', 'magic-timeline' ),
+				'label' => __( 'Item Spacing', 'magic-timeline-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -1152,7 +1152,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'item_spacing',
 			array(
-				'label'       => __( 'Item Gap', 'magic-timeline' ),
+				'label'       => __( 'Item Gap', 'magic-timeline-for-elementor' ),
 				'type'        => Controls_Manager::SLIDER,
 				'size_units'  => array( 'px' ),
 				'range'       => array(
@@ -1165,7 +1165,7 @@ class Timeline_Widget extends Widget_Base {
 					'size' => 40,
 					'unit' => 'px',
 				),
-				'description' => __( 'The gap between items — vertical in Single Column/Alternating layouts, horizontal in the Horizontal layout.', 'magic-timeline' ),
+				'description' => __( 'The gap between items — vertical in Single Column/Alternating layouts, horizontal in the Horizontal layout.', 'magic-timeline-for-elementor' ),
 				'selectors'   => array(
 					'{{WRAPPER}} .mtl-timeline' => '--mtl-item-gap: {{SIZE}}{{UNIT}};',
 				),
@@ -1175,7 +1175,7 @@ class Timeline_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'horizontal_item_width',
 			array(
-				'label'      => __( 'Item Width', 'magic-timeline' ),
+				'label'      => __( 'Item Width', 'magic-timeline-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(

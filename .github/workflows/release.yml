@@ -58,6 +58,6 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           gh release create "v$VERSION" \
-            "dist/magic-timeline-$VERSION.zip" \
+            "dist/magic-timeline-for-elementor-$VERSION.zip" \
             --title "v$VERSION" \
             --notes-file /tmp/release-notes.md

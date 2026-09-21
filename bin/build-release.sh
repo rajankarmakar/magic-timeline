@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Assembles a clean, buyer-ready release zip for Magic Timeline.
+# Assembles a clean, buyer-ready release zip for Magic Timeline for Elementor.
 #
 # This is packaging, not a build: nothing here transforms PHP/CSS/JS. It just
 # selects the files that actually ship to a buyer and excludes everything
@@ -20,7 +20,7 @@
 
 set -euo pipefail
 
-PLUGIN_SLUG="magic-timeline"
+PLUGIN_SLUG="magic-timeline-for-elementor"
 PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PLUGIN_DIR"
 
