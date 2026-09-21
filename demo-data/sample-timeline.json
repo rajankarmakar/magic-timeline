@@ -80,7 +80,7 @@
 										"item_title": "Project Kickoff",
 										"item_badge_show": "",
 										"item_badge_text": "",
-										"item_description": "Started development of the Magic Timeline widget with a focus on clean design and flexibility.",
+										"item_description": "Started development of the Magic Timeline for Elementor widget with a focus on clean design and flexibility.",
 										"item_button_show": ""
 									}
 								]
@@ -97,6 +97,6 @@
 	],
 	"page_settings": [],
 	"version": "0.4",
-	"title": "Magic Timeline Demo",
+	"title": "Magic Timeline for Elementor Demo",
 	"type": "section"
 }

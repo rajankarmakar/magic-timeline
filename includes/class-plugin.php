@@ -34,7 +34,7 @@ final class Plugin {
 		$elements_manager->add_category(
 			self::CATEGORY,
 			array(
-				'title' => __( 'Magic Timeline', 'magic-timeline' ),
+				'title' => __( 'Magic Timeline', 'magic-timeline-for-elementor' ),
 				'icon'  => 'eicon-time-line',
 			)
 		);

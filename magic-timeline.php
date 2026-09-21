@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       Magic Timeline
+ * Plugin Name:       Magic Timeline for Elementor
  * Description:       A fully customizable vertical timeline widget for Elementor.
  * Version:           1.1.0
  * Author:            Rajan Karmaker
  * Author URI:        https://rajankarmaker.com
- * Text Domain:       magic-timeline
+ * Text Domain:       magic-timeline-for-elementor
  * Domain Path:       /languages
  * Requires at least: 5.8
  * Requires PHP:      7.4
@@ -40,13 +40,16 @@ final class Magic_Timeline_Loader {
 	}
 
 	private function __construct() {
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
 	}
 
-	public function on_plugins_loaded() {
-		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- Kept deliberately: this plugin also ships outside WordPress.org (GitHub releases), where there is no wp-content/languages/plugins/ auto-population to fall back on. WP core checks that WP.org-managed location first regardless, so this only ever loads our bundled languages/ files when a WP.org-served translation isn't already present.
-		load_plugin_textdomain( 'magic-timeline', false, dirname( MAGIC_TIMELINE_BASENAME ) . '/languages' );
+	public function load_textdomain() {
+		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- Kept deliberately: this plugin also ships outside WordPress.org (GitHub releases), where there is no wp-content/languages/plugins/ auto-population to fall back on. WP core checks that WP.org-managed location first regardless, so this only ever loads our bundled languages/ files when a WP.org-served translation isn't already present. Hooked on 'init' (rather than called inline during 'plugins_loaded') per WP core's 6.7 i18n guidance, to avoid loading translations before they're needed.
+		load_plugin_textdomain( 'magic-timeline-for-elementor', false, dirname( MAGIC_TIMELINE_BASENAME ) . '/languages' );
+	}
 
+	public function on_plugins_loaded() {
 		if ( ! $this->is_compatible() ) {
 			return;
 		}
@@ -81,9 +84,9 @@ final class Magic_Timeline_Loader {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name, 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'magic-timeline' ),
-			'<strong>' . esc_html__( 'Magic Timeline', 'magic-timeline' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'magic-timeline' ) . '</strong>'
+			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'magic-timeline-for-elementor' ),
+			'<strong>' . esc_html__( 'Magic Timeline for Elementor', 'magic-timeline-for-elementor' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'magic-timeline-for-elementor' ) . '</strong>'
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%s</p></div>', wp_kses_post( $message ) );
@@ -96,9 +99,9 @@ final class Magic_Timeline_Loader {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name, 2: Elementor, 3: Required version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'magic-timeline' ),
-			'<strong>' . esc_html__( 'Magic Timeline', 'magic-timeline' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'magic-timeline' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'magic-timeline-for-elementor' ),
+			'<strong>' . esc_html__( 'Magic Timeline for Elementor', 'magic-timeline-for-elementor' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'magic-timeline-for-elementor' ) . '</strong>',
 			MAGIC_TIMELINE_MIN_ELEMENTOR_VERSION
 		);
 
@@ -112,9 +115,9 @@ final class Magic_Timeline_Loader {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name, 2: PHP, 3: Required version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'magic-timeline' ),
-			'<strong>' . esc_html__( 'Magic Timeline', 'magic-timeline' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'magic-timeline' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'magic-timeline-for-elementor' ),
+			'<strong>' . esc_html__( 'Magic Timeline for Elementor', 'magic-timeline-for-elementor' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'magic-timeline-for-elementor' ) . '</strong>',
 			MAGIC_TIMELINE_MIN_PHP_VERSION
 		);
 

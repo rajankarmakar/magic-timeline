@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Magic Timeline. Generated from readme.txt by bin/generate-changelog.sh — edit the Changelog section there, not this file directly.
+All notable changes to Magic Timeline for Elementor. Generated from readme.txt by bin/generate-changelog.sh — edit the Changelog section there, not this file directly.
 
 ## 1.1.0
 - New: Horizontal layout option (Content → Layout). Items lay out left-to-right along a horizontal connecting line, with a new "Item Width" style control (Style → Item Spacing). On tablet/mobile it automatically falls back to the single-column layout for readability.

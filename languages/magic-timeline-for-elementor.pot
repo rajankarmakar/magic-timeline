@@ -1,0 +1,388 @@
+# Copyright (C) 2026 Rajan Karmaker
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Magic Timeline for Elementor 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/magic-timeline-for-elementor\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-21T12:43:24+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: magic-timeline-for-elementor\n"
+
+#. Plugin Name of the plugin
+#: magic-timeline.php
+#: magic-timeline.php:88
+#: magic-timeline.php:103
+#: magic-timeline.php:119
+msgid "Magic Timeline for Elementor"
+msgstr ""
+
+#. Description of the plugin
+#: magic-timeline.php
+msgid "A fully customizable vertical timeline widget for Elementor."
+msgstr ""
+
+#. Author of the plugin
+#: magic-timeline.php
+msgid "Rajan Karmaker"
+msgstr ""
+
+#. Author URI of the plugin
+#: magic-timeline.php
+msgid "https://rajankarmaker.com"
+msgstr ""
+
+#: includes/class-plugin.php:37
+#: widgets/class-timeline-widget.php:24
+msgid "Magic Timeline"
+msgstr ""
+
+#. translators: 1: Plugin name, 2: Elementor
+#: magic-timeline.php:87
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+msgstr ""
+
+#: magic-timeline.php:89
+#: magic-timeline.php:104
+msgid "Elementor"
+msgstr ""
+
+#. translators: 1: Plugin name, 2: Elementor, 3: Required version
+#. translators: 1: Plugin name, 2: PHP, 3: Required version
+#: magic-timeline.php:102
+#: magic-timeline.php:118
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+msgstr ""
+
+#: magic-timeline.php:120
+msgid "PHP"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:68
+#: widgets/class-timeline-widget.php:76
+msgid "Layout"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:80
+msgid "Single Column"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:81
+msgid "Alternating"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:82
+msgid "Horizontal"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:91
+msgid "Icon Badge Shape"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:95
+msgid "Circle"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:96
+msgid "Square"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:105
+#: widgets/class-timeline-widget.php:391
+msgid "Connecting Line"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:107
+#: widgets/class-timeline-widget.php:193
+#: widgets/class-timeline-widget.php:227
+msgid "Show"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:108
+#: widgets/class-timeline-widget.php:194
+#: widgets/class-timeline-widget.php:228
+msgid "Hide"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:117
+msgid "Entrance Animation"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:119
+msgid "On"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:120
+msgid "Off"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:129
+msgid "Disable Animation on Mobile"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:131
+msgid "Yes"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:132
+msgid "No"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:149
+msgid "Timeline Items"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:159
+msgid "Icon"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:171
+msgid "Date"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:173
+msgid "January 1st, 2025"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:181
+#: widgets/class-timeline-widget.php:736
+msgid "Title"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:183
+msgid "Timeline Title"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:191
+#: widgets/class-timeline-widget.php:811
+msgid "Status Badge"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:203
+msgid "Badge Text"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:205
+#: widgets/class-timeline-widget.php:284
+msgid "Latest"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:214
+#: widgets/class-timeline-widget.php:906
+msgid "Description"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:216
+msgid "Describe what happened at this point in the timeline."
+msgstr ""
+
+#: widgets/class-timeline-widget.php:225
+#: widgets/class-timeline-widget.php:959
+msgid "Button"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:237
+msgid "Button Text"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:239
+#: widgets/class-timeline-widget.php:287
+msgid "Download ZIP"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:248
+msgid "Button Icon"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:261
+msgid "Button Link"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:263
+msgid "https://your-link.com"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:275
+msgid "Items"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:281
+msgid "Initial Release"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:282
+msgid "March 13th, 2025"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:285
+msgid "We officially launched the plugin with core timeline functionality and full Elementor style controls."
+msgstr ""
+
+#: widgets/class-timeline-widget.php:290
+msgid "Beta Testing Phase"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:291
+msgid "February 1st, 2025"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:292
+msgid "Gathered feedback from beta users and refined the widget based on real-world usage."
+msgstr ""
+
+#: widgets/class-timeline-widget.php:295
+msgid "Project Kickoff"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:296
+msgid "December 10th, 2024"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:297
+msgid "Started development of the Magic Timeline widget with a focus on clean design and flexibility."
+msgstr ""
+
+#: widgets/class-timeline-widget.php:313
+msgid "Container"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:321
+msgid "Max Width"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:352
+#: widgets/class-timeline-widget.php:691
+#: widgets/class-timeline-widget.php:879
+#: widgets/class-timeline-widget.php:1076
+msgid "Padding"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:364
+#: widgets/class-timeline-widget.php:582
+#: widgets/class-timeline-widget.php:671
+#: widgets/class-timeline-widget.php:859
+#: widgets/class-timeline-widget.php:1056
+msgid "Border Radius"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:400
+#: widgets/class-timeline-widget.php:744
+#: widgets/class-timeline-widget.php:914
+msgid "Color"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:412
+msgid "Width"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:434
+msgid "Style"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:438
+msgid "Solid"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:439
+msgid "Dashed"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:440
+msgid "Dotted"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:451
+msgid "Gap Color Around Icon"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:453
+msgid "Creates a halo around each icon badge so the line appears to break around it. Match this to the area behind your timeline."
+msgstr ""
+
+#: widgets/class-timeline-widget.php:464
+msgid "Gap Size"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:493
+msgid "Icon Badge"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:501
+msgid "Badge Size"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:523
+msgid "Icon Size"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:545
+msgid "Icon Color"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:594
+msgid "Spacing From Content"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:623
+msgid "Date Pill"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:639
+#: widgets/class-timeline-widget.php:827
+#: widgets/class-timeline-widget.php:982
+#: widgets/class-timeline-widget.php:1013
+msgid "Text Color"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:711
+#: widgets/class-timeline-widget.php:786
+#: widgets/class-timeline-widget.php:934
+msgid "Spacing Below"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:764
+msgid "Spacing From Badge"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:976
+msgid "Normal"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1007
+msgid "Hover"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1033
+msgid "Border Color"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1096
+msgid "Icon Spacing"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1118
+msgid "Spacing Above"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1147
+msgid "Item Spacing"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1155
+msgid "Item Gap"
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1168
+msgid "The gap between items — vertical in Single Column/Alternating layouts, horizontal in the Horizontal layout."
+msgstr ""
+
+#: widgets/class-timeline-widget.php:1178
+msgid "Item Width"
+msgstr ""

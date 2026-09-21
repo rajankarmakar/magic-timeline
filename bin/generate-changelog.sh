@@ -25,7 +25,7 @@ CHANGELOG_BODY=$(awk '
 {
 	echo "# Changelog"
 	echo
-	echo "All notable changes to Magic Timeline. Generated from readme.txt by bin/generate-changelog.sh — edit the Changelog section there, not this file directly."
+	echo "All notable changes to Magic Timeline for Elementor. Generated from readme.txt by bin/generate-changelog.sh — edit the Changelog section there, not this file directly."
 	echo
 	printf '%s\n' "$CHANGELOG_BODY"
 } > "$OUTPUT_PATH"
